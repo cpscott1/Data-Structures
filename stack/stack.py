@@ -29,3 +29,14 @@ class Stack:
             remove = self.storage.pop()
             self.size -= 1
             return remove
+
+
+class Stack:
+    def __init__(self):
+        self.storage = LinkedList()
+
+    def __len__(self):
+        return self.storage.length
+
+
+d
