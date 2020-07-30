@@ -118,29 +118,36 @@ class DoublyLinkedList:
         if node is self.tail:
             self.remove_from_tail()
         else:
-            node.delete()
             self.length -= 1
         self.add_to_head(value)
 
     """Removes the input node from its current spot in the
     List and inserts it as the new tail node of the List."""
     def move_to_end(self, node):
-        pass
-
+            if node is self.tail:
+                return
+            value = node.value
+            if node is self.tail:
+                self.remove_from_head()
+            else:
+                self.length -= 1
+            self.add_to_tail(value)
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
         if self.head is None and self.tail is None:
             return
         self.length -= 1
-        if self.head == self.head and node == self.head:
+        if self.head == self.tail:
             self.head = None
             self.tail = None
-        if self.head == node:
+        elif self.head == node:
             self.head = node.next
             node.delete()
-        if self.tail == node:
+        elif self.tail == node:
             self.tail = node.prev
+            node.delete()
+        else:
             node.delete()
 
     """Returns the highest value currently in the list"""
