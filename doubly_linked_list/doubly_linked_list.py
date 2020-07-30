@@ -127,7 +127,7 @@ class DoublyLinkedList:
             if node is self.tail:
                 return
             value = node.value
-            if node is self.tail:
+            if node is self.head:
                 self.remove_from_head()
             else:
                 self.length -= 1
